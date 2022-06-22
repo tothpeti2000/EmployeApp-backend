@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.Models.Employee
 {
     public class Employee: Entity.Entity
     {
@@ -21,6 +21,6 @@ namespace Domain.Models
         public Employee? Superior { get; set; }
 
         [Required]
-        public Department Department { get; set; }
+        public Department.Department Department { get; set; }
     }
 }

@@ -1,21 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Domain.Models;
+using Domain.Models.Employee;
+using Domain.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeesController : ControllerBase
+    public class EmployeesController : BaseController<EmployeeService, Employee, EmployeeFormData>
     {
-        public EmployeesController()
-        {
-
-        }
-
-        [HttpGet]
-        public ActionResult GetAll()
-        {
-            return Ok();
-        }
+        public EmployeesController(EmployeeService service) : base(service)
+        { }
     }
 }

@@ -1,4 +1,5 @@
 using DAL;
+using Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,9 @@ builder.Services.AddDbContext<EmployeeContext>(options => options.UseSqlServer(c
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<EmployeeService, EmployeeService>();
+builder.Services.AddScoped<DepartmentService, DepartmentService>();
 
 var app = builder.Build();
 
