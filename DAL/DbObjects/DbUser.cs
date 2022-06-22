@@ -9,5 +9,7 @@ namespace DAL.DbObjects
 {
     public class DbUser: IdentityUser
     {
+        public long EmployeeId { get; set; }
+        public DbEmployee Employee { get; set; }
     }
 }

@@ -7,5 +7,15 @@ namespace API.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
+        public EmployeesController()
+        {
+
+        }
+
+        [HttpGet]
+        public ActionResult GetAll()
+        {
+            return Ok();
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace DAL.DbObjects
         public string Position { get; set; }
         public string Phone { get; set; }
 
-        public long SuperiorId { get; set; }
+        public long? SuperiorId { get; set; }
         public DbEmployee? Superior { get; set; }
 
         public long DepartmentId { get; set; }

@@ -1,5 +1,4 @@
 ﻿using DAL.DbObjects;
-using Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,9 +11,41 @@ namespace DAL
 {
     public class EmployeeContext: IdentityDbContext<DbUser>
     {
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Department> Departments { get; set; }
+        public DbSet<DbEmployee> Employees { get; set; }
+        public DbSet<DbDepartment> Departments { get; set; }
 
         public EmployeeContext(DbContextOptions<EmployeeContext> options): base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            ConfigureEmployees(builder);
+            ConfigureDepartments(builder);
+        }
+
+        private void ConfigureEmployees(ModelBuilder builder) 
+        {
+            builder.Entity<DbEmployee>()
+                .ToTable("Employee");
+
+            builder.Entity<DbEmployee>()
+                .HasKey(e => e.Id);
+
+            builder.Entity<DbEmployee>()
+                .HasOne(e => e.Superior);
+
+            builder.Entity<DbEmployee>()
+                .HasOne(e => e.Department);
+        }
+
+        private void ConfigureDepartments(ModelBuilder builder)
+        {
+            builder.Entity<DbDepartment>()
+                .ToTable("Department");
+
+            builder.Entity<DbDepartment>()
+                .HasKey(d => d.Id);
+        }
     }
 }
