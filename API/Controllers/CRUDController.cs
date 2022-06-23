@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
-    public abstract class BaseController<T1, T2, T3> : ControllerBase where T1 : IService<T2, T3> where T2 : Entity
+    public abstract class CRUDController<T1, T2, T3> : ControllerBase where T1 : IService<T2, T3> where T2 : Entity
     {
         protected readonly T1 service;
 
-        public BaseController(T1 service)
+        public CRUDController(T1 service)
         {
             this.service = service;
         }
@@ -19,6 +19,8 @@ namespace API.Controllers
         public async Task<ActionResult> GetAll()
         {
             var response = await service.Query(_ => true);
+
+
 
             return Ok(typeof(T1).ToString());
         }

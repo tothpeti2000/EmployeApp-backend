@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL.DbObjects;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class EmployeeRepository
+    /*public class EmployeeRepository : CRUDRepository<DbEmployee>
     {
-        private readonly EmployeeContext db;
+        public EmployeeRepository(EmployeeContext db): base(db)
+        { }
 
-        public EmployeeRepository(EmployeeContext db)
+        protected override DbSet<DbEmployee> InitializeDbSet(EmployeeContext db)
         {
-            this.db = db;
+            return db.Employees;
         }
-    }
+    }*/
 }

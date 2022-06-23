@@ -7,7 +7,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentsController : BaseController<DepartmentService, Department, DepartmentFormData>
+    public class DepartmentsController : CRUDController<DepartmentService, Department, DepartmentFormData>
     {
         public DepartmentsController(DepartmentService service) : base(service)
         { }

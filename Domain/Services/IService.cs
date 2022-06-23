@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Services
 {
-    // T1 ~ Employee
-    // T2 ~ DTO
+    // T1 ~ Model type
+    // T2 ~ Corresponding DTO type
     public interface IService<T1, T2>
     {
         Task<T1> GetByIdAsync(long Id);

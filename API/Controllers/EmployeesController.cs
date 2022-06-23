@@ -8,7 +8,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeesController : BaseController<EmployeeService, Employee, EmployeeFormData>
+    public class EmployeesController : CRUDController<EmployeeService, Employee, EmployeeFormData>
     {
         public EmployeesController(EmployeeService service) : base(service)
         { }
