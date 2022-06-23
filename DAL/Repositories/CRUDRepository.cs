@@ -13,33 +13,35 @@ namespace DAL.Repositories
     // T ~ Type of items stored like DbEmployee or DbDepartment
     public abstract class CRUDRepository<T> : IRepository<T> where T : Entity
     {
-        public DbSet<T> DbSet { get; }
+        protected EmployeeContext db;
+        public DbSet<T> Items { get; }
 
         public CRUDRepository(EmployeeContext db)
         {
-            DbSet = InitializeDbSet(db);
+            this.db = db;
+            Items = InitializeDbSet(db);
         }
 
         protected abstract DbSet<T> InitializeDbSet(EmployeeContext db);
 
-        public async Task<T?> GetById(long Id)
+        public async Task<T?> GetByIdAsync(long Id)
         {
-            return await DbSet
+            return await Items
                 .FirstOrDefaultAsync(item => item.Id == Id);
         }
 
         public IQueryable<T> Query(Expression<Func<T, bool>> predicate)
         {
-            return DbSet
+            return Items
                 .Where(predicate);
         }
 
         public async Task DeleteByIdAsync(long Id)
         {
-            var item = await DbSet
+            var item = await Items
                 .FirstOrDefaultAsync(item => item.Id == Id);
 
-            DbSet.Remove(item);
+            await db.SaveChangesAsync();
         }
     }
 }

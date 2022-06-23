@@ -16,11 +16,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int count = 20)
         {
             var response = await service.Query(_ => true);
-
-
 
             return Ok(typeof(T1).ToString());
         }
@@ -42,7 +40,7 @@ namespace API.Controllers
         }
 
         [HttpPatch("{Id}")]
-        public async Task<ActionResult> Update([FromBody] T3 data)
+        public async Task<ActionResult> Update(long Id, [FromBody] T3 data)
         {
             await service.UpdateAsync(data);
 

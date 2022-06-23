@@ -1,4 +1,5 @@
 ﻿using DAL.DbObjects;
+using EntityFramework.Exceptions.SqlServer;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,6 +16,13 @@ namespace DAL
         public DbSet<DbDepartment> Departments { get; set; }
 
         public EmployeeContext(DbContextOptions<EmployeeContext> options): base(options) { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseExceptionProcessor();
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

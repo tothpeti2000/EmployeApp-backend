@@ -28,7 +28,7 @@ namespace Domain.Services
 
         public Task<PagedResponse<Employee>> Query(Expression<Func<Employee, bool>> predicate)
         {
-            throw new NotImplementedException();
+            throw new KeyNotFoundException("Error message");
         }
 
         public Task<Employee> UpdateAsync(EmployeeFormData entity)

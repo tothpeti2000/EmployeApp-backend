@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    /*public class EmployeeRepository : CRUDRepository<DbEmployee>
+    public class EmployeeRepository : CRUDRepository<DbEmployee>
     {
         public EmployeeRepository(EmployeeContext db): base(db)
         { }
@@ -17,5 +17,5 @@ namespace DAL.Repositories
         {
             return db.Employees;
         }
-    }*/
+    }
 }
