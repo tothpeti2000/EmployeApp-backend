@@ -12,7 +12,7 @@ namespace Domain.Services
     // T2 ~ Corresponding DTO type
     public interface IService<T1, T2>
     {
-        Task<T1> GetByIdAsync(long Id);
+        Task<T1?> GetByIdAsync(long Id);
         Task<PagedResponse<T1>> Query(Expression<Func<T1, bool>> predicate);
         Task<T1> AddAsync(T2 entity);
         Task<T1> UpdateAsync(T2 entity);

@@ -18,6 +18,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int count = 20)
         {
+            // TODO: Add paging
             var response = await service.Query(_ => true);
 
             return Ok(typeof(T1).ToString());

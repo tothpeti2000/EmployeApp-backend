@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args)
     .RegisterServices();
 
 var app = builder.Build()
-    .SetupMiddleware();
+    .SetupMiddleware()
+    .SeedDbData();
 
 app.Run();
